@@ -50,20 +50,24 @@ class TempDetails extends StatelessWidget {
             children: [
               IconButton(
                 padding: EdgeInsets.zero,
-                onPressed: () {},
+                onPressed: () {
+                  _controller.increaseTemp();
+                },
                 icon: const Icon(
                   Icons.arrow_drop_up,
                   size: 48,
                   color: Colors.white,
                 ),
               ),
-              const Text(
-                "29 " "\u2103",
-                style: TextStyle(fontSize: 88, color: Colors.white),
+              Text(
+                "${_controller.degreeTemp}" "\u2103",
+                style: const TextStyle(fontSize: 88, color: Colors.white),
               ),
               IconButton(
                 padding: EdgeInsets.zero,
-                onPressed: () {},
+                onPressed: () {
+                  _controller.decreaseTemp();
+                },
                 icon: const Icon(
                   Icons.arrow_drop_down,
                   size: 48,

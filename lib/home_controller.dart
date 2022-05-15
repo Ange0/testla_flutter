@@ -9,7 +9,10 @@ class HomeController extends ChangeNotifier {
   int selectedBottomTab = 0;
 
   bool isCoolSeleted = true;
+  int degreeTemp = 16;
 
+  bool isShowTyres = false;
+  bool isShowTyresSatus = false;
   void updateRightDoorLock() {
     isRightDoorLock = !isRightDoorLock;
     notifyListeners();
@@ -37,6 +40,39 @@ class HomeController extends ChangeNotifier {
 
   void updateCoolSelectedTab() {
     isCoolSeleted = !isCoolSeleted;
+    notifyListeners();
+  }
+
+  void increaseTemp() {
+    degreeTemp++;
+    notifyListeners();
+  }
+
+  void decreaseTemp() {
+    if (degreeTemp > 16) {
+      degreeTemp--;
+      notifyListeners();
+    }
+  }
+
+  void showTyresController(int index) {
+    if (index == 3) {
+      Future.delayed(const Duration(milliseconds: 400), () {
+        isShowTyres = true;
+        notifyListeners();
+      });
+    } else {
+      isShowTyres = false;
+      notifyListeners();
+    }
+  }
+
+  void tyreStatusController(index) {
+    if (index == 3) {
+      isShowTyresSatus = true;
+    } else {
+      isShowTyresSatus = false;
+    }
     notifyListeners();
   }
 }
